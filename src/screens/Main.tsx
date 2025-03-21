@@ -1,7 +1,12 @@
-import { useGetGameDataState } from "../hooks/get-game-data-state";
+import { useGetKumohaData } from "@tanuden/kumoha-react";
 
 export const Main = () => {
-  const gameDataState = useGetGameDataState();
+  const kumohaData = useGetKumohaData();
+  const allData = {
+    gameData: kumohaData.gameData,
+    gameState: kumohaData.gameState,
+    pluginData: kumohaData.pluginData,
+  };
   return (
     <>
       <section className="main-box">
@@ -20,9 +25,9 @@ export const Main = () => {
             overflowX: "auto",
           }}
         >
-          {!gameDataState
-            ? "データ期待中..."
-            : JSON.stringify(gameDataState, null, 2)}
+          {!kumohaData.connected
+            ? "データ期待中... ゲームとタヌ電コンソールを起動して、ゲームにダイヤを選択してください。"
+            : JSON.stringify(allData, null, 2)}
         </pre>
       </section>
       <p style={{ textAlign: "center", color: "#75869c", fontSize: "1.2rem" }}>

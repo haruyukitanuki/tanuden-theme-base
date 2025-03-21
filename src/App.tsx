@@ -1,14 +1,15 @@
 import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./AppRouter";
-import { GameDataContext } from "./contexts";
+import { KumohaDataProvider } from "@tanuden/kumoha-react";
+import { ENGINE_SOCKET_HOST } from "./constants";
 
 export const App = () => {
   return (
-    <GameDataContext.Provider value={null}>
+    <KumohaDataProvider kumohaUri={ENGINE_SOCKET_HOST}>
       <BrowserRouter>
         <AppRouter />
       </BrowserRouter>
-    </GameDataContext.Provider>
+    </KumohaDataProvider>
   );
 };
 
