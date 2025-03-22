@@ -1,16 +1,46 @@
 {
-  "name": "tanuden-theme-base",
-  "private": true,
+  "name": "@tanuden/theme-base",
+  "displayName": "開発用ベーステーマ",
+  "description": "タヌ電開発用テーマ｜ゼロから開発したい方におすすめ",
   "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+  "author": {
+    "name": "タヌ電列車システム技術部",
+    "url": "https://myuntendai.tanuden.tanu.ch"
   },
+  "contributors": [{
+    "name": "狸治ハルユキ",
+    "url": "https://go.tanu.ch/twitter"
+  }],
+  "kumohaConfig": {
+    "routing": [
+      {
+        "name": "GPSトレインナビ",
+        "type": "train-navi",
+        "route": "/gps-navi"
+      },
+      {
+        "name": "TIMS",
+        "type": "tims-interos",
+        "route": "/tims"
+      },
+      {
+        "name": "計器モニター",
+        "type": "monitor",
+        "route": "/monitor"
+      }
+    ]
+  },
+
+  "private": true,
+  "type": "module",
   "engines": {
     "tanuden-desktop-hakata": "^4.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "rimraf ./dist && tsc -b && vite build && copyfiles package.json dist/",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@tanuden/kumoha-react": "^0.0.3",
@@ -24,10 +54,12 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react-swc": "^3.8.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "rimraf": "^6.0.1",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
