@@ -1,15 +1,22 @@
 import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./AppRouter";
-import { KumohaDataProvider } from "@tanuden/kumoha-react";
-import { ENGINE_SOCKET_HOST } from "./constants";
+import { BASE_URL } from "./constants";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { getTheme } from "./theme";
+import { useMemo } from "react";
 
 export const App = () => {
+  // MUIのテーマを読み込む
+  const theme = useMemo(() => createTheme(getTheme()), []);
+
   return (
-    <KumohaDataProvider kumohaUri={ENGINE_SOCKET_HOST}>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
-    </KumohaDataProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline>
+        <BrowserRouter basename={BASE_URL}>
+          <AppRouter />
+        </BrowserRouter>
+      </CssBaseline>
+    </ThemeProvider>
   );
 };
 

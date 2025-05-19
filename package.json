@@ -2,35 +2,81 @@
   "name": "@tanuden/theme-base",
   "displayName": "開発用ベーステーマ",
   "description": "タヌ電開発用テーマ｜ゼロから開発したい方におすすめ",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": {
     "name": "タヌ電列車システム技術部",
     "url": "https://myuntendai.tanuden.tanu.ch"
   },
-  "contributors": [{
-    "name": "狸治ハルユキ",
-    "url": "https://go.tanu.ch/twitter"
-  }],
+  "contributors": [
+    {
+      "name": "狸治ハルユキ",
+      "url": "https://go.tanu.ch/twitter"
+    }
+  ],
   "kumohaConfig": {
     "routing": [
       {
-        "name": "GPSトレインナビ",
-        "type": "train-navi",
-        "route": "/gps-navi"
-      },
-      {
-        "name": "TIMS",
+        "name": "デバッグデータ画面",
         "type": "tims-interos",
-        "route": "/tims"
-      },
-      {
-        "name": "計器モニター",
-        "type": "monitor",
-        "route": "/monitor"
+        "route": "/"
       }
+    ],
+    "configuration": {
+      "categories": {
+        "example": {
+          "label": "例"
+        },
+        "example.hito": {
+          "label": "例１"
+        },
+        "example.futa": {
+          "label": "例２"
+        }
+      },
+      "properties": {
+        "example.hito.ichi": {
+          "type": "string",
+          "label": "設定1",
+          "description": "メニューから選択してください",
+          "default": "niban",
+          "enum": [
+            "ichiban",
+            "niban",
+            "sanban"
+          ],
+          "enumLabels": [
+            "一番",
+            "二番",
+            "三番"
+          ]
+        },
+        "example.hito.ni": {
+          "type": "string",
+          "label": "設定2",
+          "description": "好きな動物を選択してください",
+          "default": "tanuki1",
+          "enum": [
+            "tanuki1",
+            "tanuki2",
+            "tanuki3"
+          ],
+          "enumLabels": [
+            "タヌキ",
+            "たぬき",
+            "狸"
+          ]
+        },
+        "example.futa.ichi": {
+          "type": "boolean",
+          "label": "設定3",
+          "default": false
+        }
+      }
+    },
+    "preview": [
+      "preview/preview1.jpg"
     ]
   },
-
   "private": true,
   "type": "module",
   "engines": {
@@ -38,12 +84,19 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "rimraf ./dist && tsc -b && vite build && copyfiles package.json dist/",
-    "lint": "eslint .",
+    "build": "rimraf ./dist && tsc -b && vite build && copyfiles package.json README.md preview/**/* dist/",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tanuden/kumoha-react": "^0.0.3",
+    "@fontsource/biz-udpgothic": "^5.2.5",
+    "@fontsource/jetbrains-mono": "^5.2.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.0",
+    "@tanuden/kumoha": "^0.1.5",
+    "@tanuden/kumoha-react": "^0.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.3.0",
@@ -59,6 +112,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "opentetsu": "^0.0.8",
     "rimraf": "^6.0.1",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
