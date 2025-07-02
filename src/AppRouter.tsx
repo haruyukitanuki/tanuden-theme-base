@@ -11,7 +11,9 @@ import { Boot } from "./screens/Boot";
 import MainLayout from "./layouts/MainLayout";
 
 export const AppRouter = () => {
-  const kumoha = useInitializeKumoha(ENGINE_SOCKET_HOST);
+  const kumoha = useInitializeKumoha(ENGINE_SOCKET_HOST, {
+    themeName: __THEME_NAME__,
+  });
   const [bootScreenInitialised, setBootScreenInitialized] = useState(false);
   const { state } = useKumohaClientMeta();
   const { gameData } = useKumohaData();
