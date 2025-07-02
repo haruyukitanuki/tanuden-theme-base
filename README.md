@@ -1,7 +1,7 @@
 # タヌ電開発用ベーステーマ（tanuden-theme-base）
 [タヌ電TIMS](https://myuntendai.tanuden.tanu.ch)で使用する[クモハ](https://github.com/haruyukitanuki/kumoha)テーマの開発を始めるためのボイラープレートテンプレートです。
 
-クモハテーマエンジと連携・接続するためのスターターコードが含まれています。
+クモハテーマエンジンと連携・接続するためのスターターコードが含まれています。
 
 Reactプロジェクトとして構築されているため、ある程度のWeb開発の知識が必要です。
 
