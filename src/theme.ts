@@ -1,12 +1,5 @@
 // Tanuden INTEROS Theme File
-import {
-  alpha,
-  Box,
-  createTheme,
-  darken,
-  lighten,
-  ThemeOptions,
-} from "@mui/material";
+import { createTheme, darken, lighten, ThemeOptions } from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
 
 export const GREY = {
@@ -39,14 +32,14 @@ export const BACKGROUND_DARK = {
   paper: GREY[800],
 };
 
-export const HEADER_FONT = `"BIZ UDPGothic"`;
+export const HEADER_FONT = `system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`;
 export const HEADER_FONT_WEIGHT = 600;
 export const SUBHEADER_FONT_WEIGHT = 600;
 export const SUBTITLE_FONT_WEIGHT = 300;
 export const BODY_FONT = `"BIZ UDPGothic"`;
 export const SUBTITLE_LETTER_SPACING = undefined;
 
-export const MONOSPACE_FONT = `"JetBrains Mono", monospace`;
+export const MONOSPACE_FONT = "monospace";
 
 const baselineTheme = createTheme();
 export const getTheme = (): ThemeOptions => ({
@@ -227,27 +220,6 @@ export const getTheme = (): ThemeOptions => ({
         },
       },
     },
-    MuiBackdrop: {
-      styleOverrides: {
-        root: {
-          backdropFilter: "blur(2px) saturate(80%)",
-          backgroundColor: alpha(GREY[900], 0.4),
-        },
-      },
-    },
-    MuiDialogTitle: {
-      defaultProps: {
-        component: Box,
-      },
-      styleOverrides: {
-        root: {
-          marginTop: 6,
-          "& .MuiLinearProgress-root": {
-            height: 6,
-          },
-        },
-      },
-    },
     MuiCard: {
       defaultProps: {
         variant: "outlined",
@@ -257,9 +229,7 @@ export const getTheme = (): ThemeOptions => ({
       styleOverrides: {
         root: {
           "& .MuiPaper-root": {
-            transition: "background-color 0.3s ease",
             backgroundImage: "none",
-            backdropFilter: "blur(15px) saturate(180%)",
           },
         },
       },
@@ -281,26 +251,6 @@ export const getTheme = (): ThemeOptions => ({
         },
       },
     },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          "*": {
-            transition: "border-color 0.2s ease",
-          },
-        },
-      },
-    },
-    MuiLinearProgress: {
-      styleOverrides: {
-        root: {
-          height: 8,
-          borderRadius: 8,
-        },
-        bar: {
-          borderRadius: 8,
-        },
-      },
-    },
     MuiCssBaseline: {
       styleOverrides: {
         body: {
@@ -313,18 +263,6 @@ export const getTheme = (): ThemeOptions => ({
           "*::selection": {
             color: lighten(PRIMARY_DARK, 0.8),
             backgroundColor: darken(PRIMARY_DARK, 0.3),
-          },
-          kbd: {
-            display: "inline-block",
-            margin: "0 .15rem",
-            padding: ".05rem .3rem",
-            borderRadius: 4,
-            backgroundColor: GREY[900],
-            boxShadow: `0 2px 0 1px ${GREY[700]}`,
-            border: `1px solid ${GREY[500]}`,
-            fontFamily: HEADER_FONT,
-            fontWeight: HEADER_FONT_WEIGHT,
-            textTransform: "lowercase",
           },
           scrollbarColor: "#555",
           "&::-webkit-scrollbar, & *::-webkit-scrollbar": {

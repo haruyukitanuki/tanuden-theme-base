@@ -14,23 +14,16 @@
     }
   ],
   "kumohaConfig": {
-    "routing": [
-      {
-        "name": "デバッグデータ画面",
-        "type": "tims-interos",
-        "route": "/"
-      }
-    ],
     "configuration": {
       "categories": {
         "example": {
-          "label": "例"
+          "label": "サンプル設定"
         },
         "example.hito": {
-          "label": "例１"
+          "label": "例の１"
         },
         "example.futa": {
-          "label": "例２"
+          "label": "例の２"
         }
       },
       "properties": {
@@ -58,12 +51,14 @@
           "enum": [
             "tanuki1",
             "tanuki2",
-            "tanuki3"
+            "tanuki3",
+            "tanuki-only"
           ],
           "enumLabels": [
             "タヌキ",
             "たぬき",
-            "狸"
+            "狸",
+            "たぬきがすきですよね？タ・ヌ・キだけ"
           ]
         },
         "example.futa.ichi": {
@@ -74,7 +69,7 @@
       }
     },
     "preview": [
-      "preview/preview1.jpg"
+      "preview/base-theme.png"
     ]
   },
   "private": true,
@@ -83,39 +78,37 @@
     "tanuden-desktop-hakata": "^4.0.0"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "rimraf ./dist && tsc -b && vite build && copyfiles package.json README.md preview/**/* dist/",
+    "dev": "vite --host --port 5800",
+    "build": "rimraf ./dist && tsc -b && vite build",
     "lint": "eslint . --fix",
     "lint:check": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fontsource/biz-udpgothic": "^5.2.5",
-    "@fontsource/jetbrains-mono": "^5.2.5",
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/material": "^7.1.0",
-    "@tanuden/kumoha": "^0.1.5",
-    "@tanuden/kumoha-react": "^0.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "^7.3.0",
-    "socket.io-client": "^4.8.1"
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.2.0",
+    "@tanuden/kumoha": "^0.4.0",
+    "@tanuden/kumoha-react": "^0.4.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react-swc": "^3.8.0",
-    "copyfiles": "^2.4.1",
-    "eslint": "^9.21.0",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^15.15.0",
-    "opentetsu": "^0.0.8",
+    "@eslint/js": "^9.30.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react-swc": "^3.10.2",
+    "eslint": "^9.30.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "opentetsu": "^0.0.9",
     "rimraf": "^6.0.1",
-    "typescript": "~5.7.2",
-    "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.0"
+    "rollup-plugin-copy": "^3.5.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.35.1",
+    "vite": "^7.0.0",
+    "vite-plugin-zip-pack": "^1.2.4"
   }
 }

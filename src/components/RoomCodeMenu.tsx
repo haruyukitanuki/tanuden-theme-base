@@ -1,6 +1,6 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { useGlobalStore } from "../stores";
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { useKumoha } from "@tanuden/kumoha-react";
 import { useNavigate } from "react-router-dom";
 import { KumohaError } from "@tanuden/kumoha";
@@ -17,14 +17,15 @@ export const RoomCodeMenu = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e?: FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
     if (!inputRef.current) return;
     if (!kumoha) return navigate("/");
     setError(null);
     const code = inputRef.current.value;
 
-    if (code.length !== 8) {
-      setError("コードは8文字で入力してください");
+    if (code.length !== 6) {
+      setError("コードは6文字で入力してください");
       return;
     }
 
@@ -71,7 +72,7 @@ export const RoomCodeMenu = ({
             <Box flexGrow={1}>
               <TextField
                 // label='ログイン入力'
-                placeholder="••••••••"
+                placeholder="••••••"
                 type="text"
                 fullWidth
                 error={Boolean(error)}
@@ -84,7 +85,7 @@ export const RoomCodeMenu = ({
                   },
                   htmlInput: {
                     ref: inputRef,
-                    maxLength: 8,
+                    maxLength: 6,
                     sx: {
                       textAlign: "center",
                       letterSpacing: "1.25em",
@@ -104,7 +105,9 @@ export const RoomCodeMenu = ({
                 sx={{
                   width: "100%",
                 }}
-                onClick={handleSubmit}
+                onClick={() => {
+                  handleSubmit();
+                }}
               >
                 設定
               </Button>
