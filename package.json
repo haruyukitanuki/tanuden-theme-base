@@ -79,7 +79,7 @@
   },
   "scripts": {
     "dev": "vite --host --port 5800",
-    "build": "rimraf ./dist && tsc -b && vite build",
+    "build": "rimraf dist && tsc -b && vite build",
     "lint": "eslint . --fix",
     "lint:check": "eslint .",
     "preview": "vite preview"
