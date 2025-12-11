@@ -32,6 +32,7 @@ export default defineConfig({
     __THEME_NAME__: JSON.stringify(packageName),
   },
   build: {
+    emptyOutDir: true,
     outDir: outPath,
   },
 });
